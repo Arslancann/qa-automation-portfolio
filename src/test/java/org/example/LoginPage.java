@@ -26,9 +26,9 @@ public class LoginPage {
 
     public void loginWithCredentials(String username, String password) {
         userNameInput.click();
-        userNameInput.fill("Username");
+        userNameInput.pressSequentially(username);
         userNameInput.click();
-        passwordInput.fill("Password");
+        passwordInput.pressSequentially(password);
         loginButton.click();
     }
 }
