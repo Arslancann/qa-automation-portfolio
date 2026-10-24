@@ -3,6 +3,7 @@ package org.example;
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.microsoft.playwright.options.WaitUntilState;
 
 public class LoginPage {
 
@@ -20,7 +21,7 @@ public class LoginPage {
     }
 
     public void navigateToLoginPage() {
-        page.navigate("www.saucedemo.com");
+        page.navigate("www.saucedemo.com",new Page.NavigateOptions().setWaitUntil(WaitUntilState.DOMCONTENTLOADED).setTimeout(60000));
     }
 
     public void loginWithCredentials(String username, String password) {
