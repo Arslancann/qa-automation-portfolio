@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.regex.Pattern;
+
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 public class LoginTest {
@@ -34,6 +36,7 @@ public class LoginTest {
         loginPage.navigateToLoginPage();
         loginPage.loginWithCredentials("standard_user", "secret_sauce");
 
+        assertThat(page).hasURL(Pattern.compile(".*/inventory.html"));
         assertThat(page.getByText("Products")).isVisible();
 
         browserContext.close();
