@@ -15,7 +15,8 @@ public class LoginTest {
     @BeforeAll
     static void setup() {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+        boolean isCi = System.getenv("CI") != null;
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(isCi));
     }
 
     @AfterAll

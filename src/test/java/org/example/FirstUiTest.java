@@ -18,7 +18,8 @@ public class FirstUiTest {
     @BeforeAll
     static void setup() {
         playwright = Playwright.create(); // Playwright motorunu başlat
-        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false) // Tarayıcıyı başlat ve gözle gör
+        boolean isCi = System.getenv("CI") != null; // Yereldeysek headless=false (gözle gör), GitHub'daysak headless=true (görünmez)
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(isCi) // Tarayıcıyı başlat ve gözle gör
         );
     }
 
