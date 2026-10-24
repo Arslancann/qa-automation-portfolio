@@ -21,7 +21,7 @@ public class LoginPage {
     }
 
     public void navigateToLoginPage() {
-        page.navigate("www.saucedemo.com", new Page.NavigateOptions().setWaitUntil(WaitUntilState.DOMCONTENTLOADED).setTimeout(60000));
+        page.navigate("www.saucedemo.com", new Page.NavigateOptions().setWaitUntil(WaitUntilState.COMMIT).setTimeout(60000));
     }
 
     public void loginWithCredentials(String username, String password) {
