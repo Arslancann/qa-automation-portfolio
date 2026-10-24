@@ -25,7 +25,9 @@ public class LoginPage {
     }
 
     public void loginWithCredentials(String username, String password) {
+        userNameInput.click();
         userNameInput.fill("Username");
+        userNameInput.click();
         passwordInput.fill("Password");
         loginButton.click();
     }
