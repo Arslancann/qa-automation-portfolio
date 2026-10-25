@@ -14,21 +14,23 @@ public class LoginPage {
 
     public LoginPage(Page page) {
         this.page = page;
-        this.userNameInput = page.getByLabel("Username");
-        this.passwordInput = page.getByLabel("Password");
-        this.loginButton = page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login"));
+        this.userNameInput = page.locator("[data-test='username']");
+        this.passwordInput = page.locator("[data-test='password']");
+        this.loginButton = page.locator("[data-test='login-button']");
 
     }
 
     public void navigateToLoginPage() {
-        page.navigate("https://www.saucedemo.com", new Page.NavigateOptions().setWaitUntil(WaitUntilState.COMMIT).setTimeout(60000));
+        page.navigate("https://www.saucedemo.com",
+                new Page.NavigateOptions()
+                        .setWaitUntil(WaitUntilState.COMMIT)
+                        .setTimeout(60000)
+        );
     }
 
     public void loginWithCredentials(String username, String password) {
-        userNameInput.click();
-        userNameInput.pressSequentially(username);
-        userNameInput.click();
-        passwordInput.pressSequentially(password);
+        userNameInput.fill(username);
+        passwordInput.fill(password);
         loginButton.click();
     }
 }
